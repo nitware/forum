@@ -1,0 +1,55 @@
+﻿@using Forum.UI.Models;
+@using Forum.UI.Controllers;
+@model PostModel
+
+@if (Model.Comments != null && Model.Comments.Count > 0)
+{
+    foreach (CommentModel comment in Model.Comments)
+    {
+        <tr>
+            <td>
+                <div class="post-panel-add" style="min-height: 0;padding-bottom:0px;">
+                    <div class="post-header">
+                        <div class="post-header-misc">
+                            <div class="row">
+                                <div class="col-md-1">
+                                    <img src="~/Content/Images/default_avatar.png" height="55" class="img-circle" />
+                                </div>
+                                <div class="col-md-11 right-side">
+                                    <div class="text-danger">@Html.DisplayFor(model => comment.DatePosted)</div><br />
+                                    <div class="name-and-category"><span style="color:black">@Html.DisplayFor(model => comment.User.Name)</span> @*| <span style="color:darkcyan">@Html.DisplayFor(model => model.Category.Name)</span>*@</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="post-body">
+                        <div id="@comment.Id-d">
+                            <span id="@comment.Id-span">@comment.Reply</span>
+                            @if (User.Identity.IsAuthenticated && BaseController.LoggedInUser.Id == comment.User.Id)
+                            {
+                                <div style="margin-top:10px; float:right;">
+                                    <button class="btn-link" onclick="show(@comment.Id)"><i class="fa fa-edit"></i> Edit</button>
+                                </div>
+                            }
+                        </div>
+                        <div id="@comment.Id" style="display:none;text-align:left;">
+                            <textarea id="@comment.Id-ta" class="form-control" rows=10 cols=10 spellcheck="true" placeholder="Reply to this topic">@comment.Reply</textarea>
+
+                            <div style="margin-top:5px;">
+                                <button class="btn btn-info btn-sm" onclick="saveChanges(@comment.Id)"><i class="fa fa-save"></i> Save Changes</button>
+                                <button class="btn btn-default btn-sm" onclick="cancel(@comment.Id)"><i class="fa fa-times"></i> Cancel</button>
+                                <span id="@comment.Id-busy" style="display:none;">
+                                    <img src="@Url.Content("~/Content/Images/busy.gif")" height="30" alt="" />
+                                    Busy ...
+                                </span>
+                            </div>
+                        </div>
+
+                        <hr />
+                    </div>
+                </div>
+            </td>
+        </tr>
+    }
+}

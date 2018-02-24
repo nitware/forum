@@ -1,0 +1,223 @@
+﻿@using Forum.UI.Models;
+@using Forum.UI.Controllers;
+@model PostModel
+
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Scripts {
+
+<script>
+    $(document).ready(function () {
+        $("#btnReply").click(function () {
+            var comment = $("#taReply").val();
+            if (comment == null || comment == "") {
+                alert("Please type in your reply");
+                return;
+            }
+            
+            reply();
+        });
+    });
+
+   
+
+    function show(id) {
+        document.getElementById(id + "-d").style.display = "none";
+        document.getElementById(id).style.display = "block";
+    }
+
+    function cancel(id) {
+        document.getElementById(id).style.display = "none";
+        document.getElementById(id + "-d").style.display = "block";
+    }
+
+   
+
+    function saveChanges(id) {
+        var reply = document.getElementById(id + "-ta").value;
+
+        try {
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("EditComment", "Post", new { Area = ""})',
+                data: { cid: id, reply: reply },
+                dataType: 'json',
+
+                beforeSend: function () {
+                    document.getElementById(id + "-busy").style.display = "inline";
+                },
+                complete: function () {
+                    document.getElementById(id + "-busy").style.display = "none";
+                },
+
+                success: function (result) {
+                    if (result.isSuccessful) {
+                        document.getElementById(id + "-span").innerText = result.comment;
+                        document.getElementById(id + "-d").style.display = "block";
+                        document.getElementById(id).style.display = "none";
+                    }
+                    else {
+                        document.getElementById(id + "-busy").style.display = "none";
+                        alert(jsonResult.message);
+                    }
+                },
+
+                error: function (ex) {
+                    document.getElementById(id + "-busy").style.display = "none";
+                    alert("Operation failed! " + ex.responseText);
+                }
+            });
+        }
+        catch(e)
+        {
+            document.getElementById(id + "-busy").style.display = "none";
+            alert(e.message);
+        }
+    }
+
+    function reply() {
+       
+        try {
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("Detail", "Post", new { Area = ""})',
+                data: $("#frmDetail").serialize(),
+                dataType: 'html',
+
+                beforeSend: function () {
+                    $("#replyBusyIndicator").show();
+                },
+                complete: function () {
+                    $("#replyBusyIndicator").hide();
+                },
+
+                success: function (comments) {
+                    $("#comments").html(comments);
+                    $("#taReply").val("");
+                    //alert("Your reply was successfully saved");
+                },
+
+                error: function (ex) {
+                    $("#replyBusyIndicator").hide();
+                    alert("Operation failed! " + ex.responseText);
+                }
+            });
+        }
+        catch (e) {
+            $("#replyBusyIndicator").hide();
+            alert(e.message);
+        }
+
+    }
+</script>
+    }
+
+
+<div class="post-panel-add" style="min-height: 90px;padding-bottom:0">
+    <div class="post-header" style="border-bottom:2px solid gray;flex: 0;">
+        <div class="post-header-misc" >
+            <div class="row">
+                <div class="col-md-12">
+                    <table style="height:100%;width:100%">
+                        <tr>
+                            <td rowspan="2" width="100px" >
+                                <img src="~/Content/Images/default_avatar.png" width="100" class="img-thumbnail" />
+                            </td>
+                            <td valign="bottom" >
+                                &nbsp;
+                            </td>
+                        </tr>
+                        <tr>
+                            <td rowspan="2" valign="bottom" style="padding-left:10px;color:silver" >
+                                <div style="color:silver; font-size:12px;font-weight:normal">
+                                    Started by <span class="text-danger" style="font-weight:bold">@Html.DisplayFor(model => model.User.Name)</span> on <span>@Html.DisplayFor(model => model.DatePosted)</span>, <span>@Html.DisplayFor(model => model.Category.Name)</span>
+                                </div>
+                                <div style="font-size:26px;color:black">
+                                    @Html.DisplayFor(model => model.Subject)
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<table>
+    <tr>
+        <td>
+            <div class="post-panel-add" style="min-height: 0;padding-bottom:0px;">
+                <div class="post-body">
+                    @Html.DisplayFor(model => model.Body)
+                    <hr />
+                </div>
+            </div>
+        </td>
+    </tr>
+
+    <tbody id="comments">
+        @Html.Partial("_Comments", Model)
+    </tbody>
+</table>
+
+@*@using (Html.BeginForm())*@
+@using (Html.BeginForm("Detail", "Post", FormMethod.Post, new { id = "frmDetail"}))
+{
+    @Html.ValidationSummary(true)
+    @Html.HiddenFor(model => model.Id)
+
+    <div class="post-panel-add">
+        <div class="post-body" style="flex:0;">
+            @Html.TextAreaFor(model => model.Comment.Reply, new { @id="taReply", @class = "form-control", @rows = 10, @cols = 10, @spellcheck = "true", @placeholder = "Reply to this topic" })
+            @Html.ValidationMessageFor(model => model.Comment.Reply)
+        </div>
+
+        <div class="post-footer">
+            <div class="pull-left">
+                <a target="_blank" href="http://www.facebook.com" class="btn btn-primary btn-sm">
+                    <i class="fa fa-facebook"></i>
+                </a>
+                <a target="_blank" href="http://www.twitter.com" class="btn btn-info btn-sm">
+                    <i class="fa fa-twitter"></i>
+                </a>
+                <a target="_blank" href="http://www.youtube.com" class="btn btn-danger btn-sm">
+                    <i class="fa fa-youtube"></i>
+                </a>
+                <a target="_blank" href="http://www.googleplus.com" class="btn btn-default btn-sm">
+                    <i class="fa fa-google-plus"></i>
+                </a>
+            </div>
+
+            <div class="pull-right">
+                @if (User.Identity.IsAuthenticated)
+                {
+                    @*<button class="btn btn-success btn-sm" type="submit" name="submit" id="submit2">
+                        <i class="fa fa-reply"></i> Reply
+                    </button>*@
+
+                    <span id="replyBusyIndicator" style="display:none;">
+                        ... Please wait
+                        <img src="@Url.Content("~/Content/Images/busy.gif")" height="30" alt="" />
+                    </span>
+                    <button id="btnReply" class="btn btn-success btn-sm" type="button">
+                        <i class="fa fa-reply"></i> Reply
+                    </button>
+                }
+                else
+                {
+                    <div class="badge" style="padding:10px" >To post a reply to this topic, kindly login</div>
+                }
+            </div>
+        </div>
+    </div>
+}
+
+
+
+
+
+

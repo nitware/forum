@@ -1,0 +1,19 @@
+﻿@using Forum.UI.Models
+@model List<PostModel>
+
+@if (Model != null && Model.Count > 0)
+{
+    <table>
+        @foreach (PostModel post in Model)
+        {
+            <tr style="vertical-align:top;">
+                <td ><i class="fa fa-comments-o" style="font-size:27px;"></i></td>
+                <td style="padding-left:10px;padding-bottom:5px;">
+                    <a href="@Url.Action("Detail", "Post", new { area = "", pid = post.Id })" >
+                        @Html.DisplayFor(model => post.Subject)
+                    </a>
+                </td>
+            </tr>
+        }
+    </table>
+}

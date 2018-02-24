@@ -1,0 +1,251 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>:: Forum - @ViewBag.Title ::</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body style="padding-top: 110px;">
+
+    <div class="navbar navbar-default navbar-fixed-top" >
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <span style="font-weight:bold">@Html.ActionLink("forum", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })</span>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+
+                    <li>@Html.ActionLink("POSTS", "Index", "Post")</li>
+                    @*@if (Forum.UI.Controllers.BaseController.IsAuthenticated)*@
+                    
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        @*<li>@Html.ActionLink("ADMIN", "About", "Home")</li>*@
+
+
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">ADMIN<span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                <li class="divider"></li>
+
+                                <li>@Html.ActionLink("Manage Users", "Index", "User", new { Area = "" }, null)</li>
+                                <li class="divider"></li>
+                                <li>@Html.ActionLink("Manage Post Category", "Index", "Category", new { Area = "" }, null)</li>
+
+                                <li class="divider"></li>
+                            </ul>
+                        </li>
+                    }
+
+                    @*<li>@Html.ActionLink("ABOUT", "About", "Home")</li>
+                    <li>@Html.ActionLink("CONTACT", "Contact", "Home")</li>*@
+
+                </ul>
+
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+
+    </div>
+    <div class="container body-content">
+        <div class="row">
+            <div class="col-md-8">@RenderBody()</div>
+            <div class="col-md-4">
+                <div class="banner">
+                    @*<div class="row">
+                        <div class="col-md-12">
+                            <div>
+                                <ul class="nav nav-tabs responsive" id="sideTab">
+                                    <li id="tab22" class="test-class active"><a class="deco-none" href="#step22" data-toggle="tab"> <span class="step">Latest</span></a></li>
+                                    <li id="tab33"><a class="deco-none" href="#step33" data-toggle="tab"><span class="step">Links</span></a></li>
+                                    <li id="tab11"><a class="deco-none misc-class" href="#step11" data-toggle="tab"><span class="step">Contact</span></a></li>
+                                </ul>
+
+
+
+                                <div class="tab-content responsive tab-content-closed">
+                                    <div class="tab-pane active" id="step22" style="font-size:14px; margin:0 15px 15px 15px">
+                                        <div class="table-responsive">
+                                            @if (Model != null && Model.News != null && Model.News.Count > 0)
+                                            {
+                                                @Html.Partial("_NewsPanel", Model.News)
+                                            }
+                                            else
+                                            {
+                                                <br />
+                                                <center id="busy2">
+                                                    <img src="@Url.Content("~/Content/Images/25.gif")" height="35" alt="" />
+                                                    Loading ...
+                                                </center>
+                                            }
+                                        </div>
+
+                                    </div>
+
+                                    <div class="tab-pane" id="step33" style="font-size:14px; margin:0 15px 15px 15px">
+                                        @if (Model != null && Model.QuickLinks != null)
+                                        {
+                                            @Html.Partial("_QuickLinksPanel", Model.QuickLinks)
+                                        }
+                                        else
+                                        {
+                                            <center id="busy3">
+                                                <img src="@Url.Content("~/ Content / Images / 25.gif")" height="35" alt="" />
+                                                Loading...
+                                            </center>
+                                        }
+
+                                        @Html.Partial("_SchoolList", Model.PrimarySchools)
+                                    </div>
+
+                                    <div class="tab-pane  " id="step11">
+                                        @Html.Partial("_SchoolList", Model.TertiaryInstitutions)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>*@
+
+                    <div class="row">
+                        <div class="col-md-12 ">
+                            <div class="pull-right" style="margin-bottom:5px;border: 1px solid gainsboro; height:100%; width:100%;padding:3px;border-radius:5px;">
+                                @*<button class="btn btn-danger btn-sm " type="submit" name="submit" id="submit2">
+                                    <i class="fa fa-plus"></i>
+                                    Start New Topic
+                                </button>*@
+
+                                <a href="@Url.Action("Add", "Post", new { area = "" })" class="btn btn-danger btn-sm">
+                                    <i class="fa fa-plus"></i> &nbsp; Start New Topic
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            @*<div class="panel panel-danger">
+                                <div class="panel-heading">Adverts</div>
+                                <div class="panel-body">
+                                    <div class="table-responsive">
+                                        Place your adverts here
+                                    </div>
+                                </div>
+                            </div>*@
+
+
+                            <div class="post-panel" style="margin-top:0;">
+                                <div class="post-header">
+                                    @*<div style="margin-bottom:10px; font-size:13px; font-family:'Century Gothic';font-weight:normal">Daniel</div>*@
+                                    Categories
+                                </div>
+
+                                <div class="post-body">
+                                    @{
+                                        Html.RenderAction("GetCategoryList", "Category");
+                                    }
+                                </div>
+
+                                @*<div class="post-footer">
+                                    <div style="float:left">views</div>
+                                    <div style="float:right">comments</div>
+                                </div>*@
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+
+                            <div class="post-panel">
+                                <div class="post-header">
+                                    Latest posts
+                                </div>
+
+                                <div class="post-body">
+                                    @{
+                                        Html.RenderAction("GetLatestPost", "Post");
+                                    }
+                                </div>
+
+                                @*<div class="post-footer">
+                                    <div style="float:left">views</div>
+                                    <div style="float:right">comments</div>
+                                </div>*@
+                            </div>
+
+
+                          
+                        </div>
+                    </div>
+
+
+
+
+
+                </div>
+
+            </div>
+            
+        </div>
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Simple Forum Application</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
+
+
+
+
+
+
+
+
+@*<div class="navbar navbar-default navbar-fixed-top" >
+            <div class="container" >
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    @Html.ActionLink("Forum", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li>@Html.ActionLink("About", "About", "Home")</li>
+                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    </ul>
+                    @Html.Partial("_LoginPartial")
+                </div>
+            </div>
+        </div>
+        <div class="container body-content">
+            @RenderBody()
+            <hr />
+            <footer>
+                <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            </footer>
+        </div>
+
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", required: false)
+    </body>
+    </html>*@

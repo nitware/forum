@@ -1,0 +1,15 @@
+C:\Users\Dan\Documents\Repositories\forum\Forum\Forum.Domain\bin\Debug\Forum.Domain.dll.config
+C:\Users\Dan\Documents\Repositories\forum\Forum\Forum.Domain\bin\Debug\Forum.Domain.dll
+C:\Users\Dan\Documents\Repositories\forum\Forum\Forum.Domain\bin\Debug\Forum.Domain.pdb
+C:\Users\Dan\Documents\Repositories\forum\Forum\Forum.Domain\bin\Debug\EntityFramework.dll
+C:\Users\Dan\Documents\Repositories\forum\Forum\Forum.Domain\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Dan\Documents\Repositories\forum\Forum\Forum.Domain\bin\Debug\EntityFramework.xml
+C:\Users\Dan\Documents\Repositories\forum\Forum\Forum.Domain\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Dan\Documents\Repositories\forum\Forum\Forum.Domain\obj\Debug\Forum.Domain.dll
+C:\Users\Dan\Documents\Repositories\forum\Forum\Forum.Domain\obj\Debug\Forum.Domain.pdb
+C:\Users\Dan\Documents\Repositories\forum\Forum\Forum.Domain\obj\Debug\Forum.Domain.Entities.Core.Migrations.Initialize.resources
+C:\Users\Dan\Documents\Repositories\forum\Forum\Forum.Domain\obj\Debug\Forum.Domain.csproj.GenerateResource.Cache
+C:\Users\Dan\Documents\Repositories\forum\Forum\Forum.Domain\obj\Debug\Forum.Domain.Entities.Core.Migrations.ModifiedCommentEntity.resources
+C:\Users\Dan\Documents\Repositories\forum\Forum\Forum.Domain\obj\Debug\Forum.Domain.Entities.Core.Migrations.ModifiedCommentEntity_2.resources
+C:\Users\Dan\Documents\Repositories\forum\Forum\Forum.Domain\obj\Debug\Forum.Domain.Entities.Core.Migrations.AddedViewEntity.resources
+C:\Users\Dan\Documents\Repositories\forum\Forum\Forum.Domain\obj\Debug\Forum.Domain.csprojResolveAssemblyReference.cache

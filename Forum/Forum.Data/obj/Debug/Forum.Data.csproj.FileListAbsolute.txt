@@ -1,0 +1,11 @@
+C:\Users\Dan\Documents\Repositories\forum\Forum\Forum.Data\obj\Debug\Forum.Data.csprojResolveAssemblyReference.cache
+C:\Users\Dan\Documents\Repositories\forum\Forum\Forum.Data\bin\Debug\Forum.Data.dll
+C:\Users\Dan\Documents\Repositories\forum\Forum\Forum.Data\bin\Debug\Forum.Data.pdb
+C:\Users\Dan\Documents\Repositories\forum\Forum\Forum.Data\bin\Debug\EntityFramework.dll
+C:\Users\Dan\Documents\Repositories\forum\Forum\Forum.Data\bin\Debug\Forum.Domain.dll
+C:\Users\Dan\Documents\Repositories\forum\Forum\Forum.Data\bin\Debug\Forum.Service.dll
+C:\Users\Dan\Documents\Repositories\forum\Forum\Forum.Data\bin\Debug\Forum.Domain.pdb
+C:\Users\Dan\Documents\Repositories\forum\Forum\Forum.Data\bin\Debug\Forum.Service.pdb
+C:\Users\Dan\Documents\Repositories\forum\Forum\Forum.Data\bin\Debug\EntityFramework.xml
+C:\Users\Dan\Documents\Repositories\forum\Forum\Forum.Data\obj\Debug\Forum.Data.dll
+C:\Users\Dan\Documents\Repositories\forum\Forum\Forum.Data\obj\Debug\Forum.Data.pdb

@@ -30,7 +30,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -40,7 +49,51 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\Category.cs" />
+    <Compile Include="Entities\Comment.cs" />
+    <Compile Include="Entities\Core\BaseEntity.cs" />
+    <Compile Include="Entities\Core\EntityContext.cs" />
+    <Compile Include="Entities\Core\Migrations\201802200857586_Initialize.cs" />
+    <Compile Include="Entities\Core\Migrations\201802200857586_Initialize.Designer.cs">
+      <DependentUpon>201802200857586_Initialize.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Core\Migrations\201802220655239_ModifiedCommentEntity.cs" />
+    <Compile Include="Entities\Core\Migrations\201802220655239_ModifiedCommentEntity.Designer.cs">
+      <DependentUpon>201802220655239_ModifiedCommentEntity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Core\Migrations\201802220710231_ModifiedCommentEntity_2.cs" />
+    <Compile Include="Entities\Core\Migrations\201802220710231_ModifiedCommentEntity_2.Designer.cs">
+      <DependentUpon>201802220710231_ModifiedCommentEntity_2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Core\Migrations\201802232309372_AddedViewEntity.cs" />
+    <Compile Include="Entities\Core\Migrations\201802232309372_AddedViewEntity.Designer.cs">
+      <DependentUpon>201802232309372_AddedViewEntity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Core\Migrations\Configuration.cs" />
+    <Compile Include="Entities\Post.cs" />
+    <Compile Include="Entities\Role.cs" />
+    <Compile Include="Entities\Person.cs" />
+    <Compile Include="Entities\View.cs" />
+    <Compile Include="Models\PersonContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Entities\Core\Migrations\201802200857586_Initialize.resx">
+      <DependentUpon>201802200857586_Initialize.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Entities\Core\Migrations\201802220655239_ModifiedCommentEntity.resx">
+      <DependentUpon>201802220655239_ModifiedCommentEntity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Entities\Core\Migrations\201802220710231_ModifiedCommentEntity_2.resx">
+      <DependentUpon>201802220710231_ModifiedCommentEntity_2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Entities\Core\Migrations\201802232309372_AddedViewEntity.resx">
+      <DependentUpon>201802232309372_AddedViewEntity.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,0 +1,83 @@
+﻿@using Forum.UI.Models;
+@model UserModel
+
+@*<div class="alert alert-success fade in nomargin">
+        <h3>@ViewBag.Title</h3>
+    </div>*@
+
+@*@Html.Partial("_IndexSetupHeader", -1)*@
+
+
+
+        <div class="setup-title">Sign Up</div>
+
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+               
+
+                @*@if (TempData["Message"] != null)
+                    {
+                        @Html.Partial("_Message", (Abundance_Nk.Model.Model.Message)TempData["Message"])
+                    }*@
+
+                <div class="form-group">
+                    <div class="col-md-2"></div>
+                        <div class="col-md-10">
+                            @Html.ValidationSummary(true)
+                        </div>
+                    </div>
+
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Name, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Name)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Email, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.Email, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Email)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.HashedPassword, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.PasswordFor(model => model.HashedPassword, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.HashedPassword)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ConfirmPassword, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.PasswordFor(model => model.ConfirmPassword, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.ConfirmPassword)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        @*<input type="submit" value="Create" class="btn btn-default" />*@
+                        <button class="btn btn-success btn-lg" type="submit" name="submit" id="submit2">
+                            <i class="fa fa-sign-in"></i> Sign Up
+                        </button>
+
+
+                        
+                    </div>
+
+                    
+                </div>
+            </div>
+        }
+
+   

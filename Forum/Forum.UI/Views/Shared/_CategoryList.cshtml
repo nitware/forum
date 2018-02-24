@@ -1,0 +1,18 @@
+﻿@using Forum.UI.Models
+@model List<CategoryModel>
+
+@if (Model != null && Model.Count > 0)
+{
+    <table>
+        @foreach (CategoryModel category in Model)
+        {
+            <tr style="vertical-align:top;">
+                @*<td><i class="fa fa-comments-o" style="font-size:27px;"></i></td>*@
+                <td style="padding-bottom:5px;">
+                    @Html.DisplayFor(model => category.Name)
+                </td>
+            </tr>
+        }
+    </table>
+}
+

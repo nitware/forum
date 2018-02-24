@@ -1,0 +1,225 @@
+﻿body {
+    /*padding-top: 50px;
+    padding-bottom: 20px;*/
+
+    padding-top: 90px;
+    font-family:'Century Gothic';
+    font-size:15px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+/* styles for validation helpers */
+.field-validation-error {
+    color: #b94a48;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+input.input-validation-error {
+    border: 1px solid #b94a48;
+}
+
+input[type="checkbox"].input-validation-error {
+    border: 0 none;
+}
+
+.validation-summary-errors {
+    color: #b94a48;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+
+
+
+
+ table{
+        width:100%;
+    }
+    .post-panel {
+        display: flex;
+        flex-direction: column;
+        min-height: 200px;
+        padding: 20px;
+        margin-top: 30px;
+        width: 100%;
+        border-radius: 5px;
+        border: 1px solid gainsboro;
+        box-shadow: gray 5px 5px 2px;
+    }
+    .post-panel .post-header{
+        border-bottom:1px solid gray; 
+        top:1500px; 
+        font-size:25px; 
+        font-weight:bold; 
+        color:darkcyan;
+        flex:3;
+    }
+    .post-panel .post-body{
+        margin-top:10px;
+        margin-bottom:10px;
+        font-family:'Century Gothic';
+        font-size:17px;
+        height:100%; 
+        display:contents; 
+        flex:15;
+    }
+    #posts table tr td:nth-child(2) a {
+        color:black;
+        /*font-style:italic;*/
+    }
+    .post-panel .post-footer{
+        border-top:1px solid gainsboro;
+        flex:2;
+    }
+    table tr:first-child .post-panel {
+        margin-top:0;
+    }
+
+    .post-panel-add {
+        display: flex;
+        flex-direction: column;
+        min-height: 200px;
+        /*padding: 20px 0;*/
+        /*padding-top:20px;*/
+        padding-bottom:20px;
+        width: 100%;
+    }
+        .post-panel-add .post-header {
+            /*border-bottom: 1px solid gainsboro;*/
+            font-family:Arial;
+            font-size: 20px;
+            font-weight: bold;
+            color: gray;
+            margin-bottom: 8px;
+            /*padding-bottom: 5px;*/
+            /*padding-top: 5px;*/
+            flex: 3;
+        }
+
+         .post-panel-add .post-header-2 {
+            border-bottom: 1px solid gainsboro;
+            font-family:Arial;
+            font-size: 15px;
+            font-weight: normal;
+            color: black;
+            margin-bottom: 30px;
+            padding-bottom: 5px;
+            /*padding-top: 5px;*/
+            flex: 3;
+        }
+            .post-panel-add .post-header .post-header-misc {
+                vertical-align: bottom;
+                margin-bottom: 7px;
+                font-size: 12px;
+                font-weight: normal;
+            }
+            .post-panel-add .post-header .post-header-misc .right-side {
+                vertical-align:bottom;
+                line-height:10px; 
+                padding-top:10px; 
+                padding-bottom:10px;
+            }
+            .post-panel-add .post-header .post-header-misc .right-side .name-and-category{
+                font-weight:normal;
+                font-size:15px;
+                font-style:normal;
+            }
+        .post-panel-add .post-body textarea {
+            max-width: 100%;
+            width: 100%;
+        }
+    .post-panel-add .post-body{
+        margin-bottom:7px;
+        font-family:'Century Gothic';
+        font-size:15px;
+        font-weight:normal!important;
+        height:100%; 
+        flex:15;
+    }
+    .post-panel-add .post-footer{
+        /*border-top:1px solid gainsboro;*/
+        /*padding-top:2px;*/
+        flex:2;
+    }
+    .post-panel-add .post-footer-2{
+        border-top:1px solid gainsboro;
+        padding-top:5px;
+        margin-top:5px;
+        flex:2;
+    }
+
+.setup-title {
+    font-size: 25px;
+    font-weight: bold;
+    color: darkcyan;
+    border-bottom:1px solid gainsboro;
+    margin-bottom:40px;
+    padding-bottom:10px;
+}
+.post-title{
+    font-size: 25px;
+    font-weight: bold;
+    color: darkcyan;
+    border-bottom:1px solid gainsboro;
+    /*margin-bottom:40px;*/
+    padding-bottom:40px;
+}
+.post-detail {
+    margin-top: 5px;
+    margin-bottom: 10px;
+    font-family: 'Century Gothic';
+    font-size: 17px;
+    height: 100%;
+    /*display:contents; 
+        flex:15;*/
+}
+.post-detail-footer {
+    font-size: 12px;
+    border-top: 1px solid gainsboro;
+    padding-top:5px;
+    /*padding-bottom:10px;*/
+}
+
+    /*bootstrap override*/
+    .navbar-default{
+        background-image:none;
+        background-color:#dbf1f1 !important ;
+        /*background-color:#05d8d8 !important ;*/
+        /*background-color:#f3fbfb !important ;*/
+    }
+    .navbar-default ul li a{
+        color:black!important;
+    }
+    .navbar-default ul li a:hover{
+        color:white!important;
+    }
+    .navbar-default ul li:hover{
+        color:white!important;
+        background-color:darkcyan;
+    }
+    .navbar-collapse, .navbar-header{
+        margin: 8px 0;
+    }

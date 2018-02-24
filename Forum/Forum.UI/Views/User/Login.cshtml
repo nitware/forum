@@ -1,0 +1,108 @@
+﻿@using Forum.UI.Models;
+
+@model UserModel
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .row.no-gutters {
+        margin-right: 0;
+        margin-left: 0;
+    }
+
+    .row.no-gutters > [class^="col-"],
+    .row.no-gutters > [class*=" col-"] {
+        padding-right: 0;
+        padding-left: 0;
+    }
+</style>
+
+<div class="row">
+    <div class="col-md-12">
+        <div>
+            <h1 class="text-danger">Login</h1>
+            <div>Please enter your <b>Email</b> and <b>Password</b> in the input box below, and click the Login button to login</div>
+            <hr style="margin-top:10px" />
+        </div>
+    </div>
+</div>
+
+<br />
+
+<div class="row no-gutters" style="background:#f4f4f6; background-image:url(../../Content/Images/black_login.jpg); background-repeat:no-repeat; background-position:left; background-size:contain ">
+    <div class="col-md-4  ">
+        @*<div>
+            <img class="img-responsive" src="~/Content/Images/black_login.jpg" style="background-color:#f2f3f5; " />
+        </div>*@
+    </div>
+
+    <div class="col-md-8">
+        @using (Html.BeginForm("Login", "User", new { Area = "", ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+            @Html.AntiForgeryToken()
+            
+
+            <div style="padding-bottom:15px; ">
+
+                <div style="height:25px; "></div>
+                <div style="background-color:#fff; border:solid 1px silver; border-radius:5px; margin:40px 20px 0 20px; padding:20px 20px 0 20px; ">
+
+                    <div class="form-group margin-bottom-5">
+                        @Html.LabelFor(m => m.Email, new { @class = "col-md-3 control-label" })
+                        <div class="col-md-8">
+                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", required = "required" })
+                            @Html.ValidationMessageFor(m => m.Email, null, new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    
+                    <div class="form-group margin-bottom-5">
+                        @Html.LabelFor(m => m.HashedPassword, new { @class = "col-md-3 control-label" })
+                        <div class="col-md-8">
+                            @Html.PasswordFor(m => m.HashedPassword, new { @class = "form-control", required = "required" })
+                            @Html.ValidationMessageFor(m => m.HashedPassword, null, new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <div class="col-md-offset-3 col-md-8">
+                            @*<input type="submit" value="Login" class="btn btn-default" />*@
+
+                            <button class="btn btn-default btn-lg" type="submit" name="submit" id="submit2">
+                                <i class="fa fa-sign-in"></i> Login
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            @Html.ValidationSummary(true)
+        }
+
+    </div>
+
+
+    
+    @*<span>
+        <div class="alert alert-success fade in nomargin">
+            If you encounter any difficulty, kindly send an email to support@nitware.com.ng or  call the following numbers ...
+        </div>
+    </span>*@
+
+    
+
+</div>
+
+<br />
+
+
+@*<div class="row">
+    <div class="col-md-12">
+        <div style="border-top:solid gainsboro 1px;margin-top:20px; ">If you encounter any difficulty, kindly send an email to support@nitware.com.ng or  call the following numbers ...</div>
+    </div>
+</div>*@
+
+
+<br />
+<br />

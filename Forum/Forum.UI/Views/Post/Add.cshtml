@@ -1,0 +1,145 @@
+﻿@using Forum.UI.Models;
+@model PostModel
+
+@{
+    ViewBag.Title = "Add";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@*<script src="~/Content/Themes/ckeditor_full/ckeditor.js"></script>*@
+
+@section Scripts {
+    <script>
+
+    $(document).ready(function () {
+        $("#btnAdd").click(function () {
+
+            var subject = $("#txtSubject").val();
+            var category = $("#ddlCategory").val();
+            var body = $("#textAreaId").val();
+            
+            if (subject == null || subject == "") {
+                alert("Please enter subject!");
+                return;
+            }
+            else if (category == null || category == "") {
+                alert("Please select a category!");
+                return;
+            }
+            else if (body == null || body == "") {
+                alert("Please enter comment!");
+                return;
+            }
+
+            add();
+        });
+    });
+
+    function add() {
+        try {
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("Add", "Post", new { Area = ""})',
+                data: $("#frmAdd").serialize(),
+                dataType: 'json',
+
+                beforeSend: function () {
+                    $("#isBusy").show();
+                },
+                complete: function () {
+                    $("#isBusy").hide();
+                },
+
+                success: function (response) {
+                    window.location.href = '@Url.Action("Index", "Post", new { Area = "" })';
+                },
+
+                error: function (ex) {
+                    $("#isBusy").hide();
+                    alert("Operation failed! " + ex.responseText);
+                }
+            });
+        }
+        catch (e) {
+            $("#isBusy").hide();
+            alert(e.message);
+        }
+
+    }
+</script>
+}
+
+
+@using (Html.BeginForm("Add", "Post", FormMethod.Post, new { id = "frmAdd" }))
+{
+                @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <div class="post-panel-add">
+        <div class="post-header-2">
+
+            <div class="post-header-misc">
+                <div class="row">
+                    <div class="col-md-12">
+                        <img src="~/Content/Images/default_avatar.png" height="55" />
+                        <div class="name-and-category">daniel egenti</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="post-body">
+            <div class="col-md-12">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        @Html.TextBoxFor(model => model.Subject, new { @class = "form-control", @placeholder = "Enter title", @id = "txtSubject" })
+                        @Html.ValidationMessageFor(model => model.Subject)
+                    </div>
+
+                    <div class="form-group">
+                        @Html.DropDownListFor(model => model.Category.Id, Model.CategorySelectList, new { @class = "form-control", @id = "ddlCategory" })
+                        @Html.ValidationMessageFor(model => model.Category.Id)
+                    </div>
+                </div>
+            </div>
+
+            @Html.TextAreaFor(model => model.Body, new { @class = "form-control", @id = "textAreaId", @rows = 10, @cols = 10, @spellcheck = "true", @placeholder = "Enter comment here" })
+            @*<script>
+            CKEDITOR.replace("textAreaId");
+            </script>*@
+            @Html.ValidationMessageFor(model => model.Body)
+
+        </div>
+
+        <div class="post-footer">
+            <div class="pull-left">
+                <a target="_blank" href="http://www.facebook.com" class="btn btn-primary btn-sm">
+                    <i class="fa fa-facebook"></i>
+                </a>
+                <a target="_blank" href="http://www.twitter.com" class="btn btn-info btn-sm">
+                    <i class="fa fa-twitter"></i>
+                </a>
+                <a target="_blank" href="http://www.youtube.com" class="btn btn-danger btn-sm">
+                    <i class="fa fa-youtube"></i>
+                </a>
+                <a target="_blank" href="http://www.googleplus.com" class="btn btn-default btn-sm">
+                    <i class="fa fa-google-plus"></i>
+                </a>
+            </div>
+
+            <div class="pull-right">
+                <span id="isBusy" style="display:none;">
+                    ... Please wait
+                    <img src="@Url.Content("~/Content/Images/busy.gif")" height="30" alt="" />
+                </span>
+                <button id="btnAdd" class="btn btn-success btn-sm" type="button" name="submit" >
+                    <i class="fa fa-save"></i> Post
+                </button>
+
+                @*<button class="btn btn-success btn-sm" type="submit" name="submit" id="submit2">
+                    <i class="fa fa-save"></i> Post
+                </button>*@
+            </div>
+        </div>
+    </div>
+}
