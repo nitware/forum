@@ -19,12 +19,18 @@ namespace Forum.Domain.Entities.Core.Migrations
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data.
-            
+
 
             context.Roles.AddOrUpdate(role => role.Name,
-            new Role { Name = "Admin" },
-            new Role { Name = "User" }
+                new Role { Name = "Admin" },
+                new Role { Name = "User" }
             );
+
+            context.Categorys.AddOrUpdate(c => c.Name,
+                new Category { Name = "Software Development" },
+                new Category { Name = "Infrastructural Engineering" },
+                new Category { Name = "Internet of Things" }
+           );
         }
 
 
