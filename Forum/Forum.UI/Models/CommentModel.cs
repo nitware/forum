@@ -13,7 +13,7 @@ namespace Forum.UI.Models
         public CommentModel()
         {
             Post = new Post();
-            User = new Person();
+            User = new User();
         }
 
         public int Id { get; set; }
@@ -22,7 +22,7 @@ namespace Forum.UI.Models
         public string Reply { get; set; }
         public DateTime DatePosted { get; set; }
         public Post Post { get; set; }
-        public Person User { get; set; }
+        public User User { get; set; }
     }
 
 

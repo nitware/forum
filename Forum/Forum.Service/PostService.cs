@@ -36,7 +36,22 @@ namespace Forum.Service
 
             return post;
         }
-               
+
+        public async Task<List<Post>> GetAllAsync(string includeProperties = null)
+        {
+            List<Post> posts = null;
+            if (string.IsNullOrWhiteSpace(includeProperties))
+            {
+                posts = await _postRepository.GetAllAsync();
+            }
+            else
+            {
+                posts = await _postRepository.GetAllAsync(includeProperties);
+            }
+
+            return posts;
+        }
+
         public List<Post> GetAll(string includeProperties = null)
         {
             List<Post> posts = null;

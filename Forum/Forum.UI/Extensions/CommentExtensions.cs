@@ -73,7 +73,7 @@ namespace Forum.UI.Extensions
             if (comment != null)
             {
                 model.Id = comment.Id;
-                model.User = comment.Commentor;
+                model.User = comment.User;
                 model.Reply = comment.Reply;
                 model.DatePosted = comment.DatePosted;
                 model.Post = comment.Post;
@@ -91,7 +91,7 @@ namespace Forum.UI.Extensions
 
             Comment comment = new Comment();
             comment.DatePosted = model.DatePosted;
-            comment.CommentorId = model.User.Id;
+            comment.UserId = model.User.Id;
             comment.Reply = model.Reply;
             comment.PostId = model.Post.Id;
             comment.Id = model.Id;

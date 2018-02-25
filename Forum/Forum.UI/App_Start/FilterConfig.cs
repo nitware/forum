@@ -10,4 +10,6 @@ namespace Forum.UI
             filters.Add(new HandleErrorAttribute());
         }
     }
+
+
 }

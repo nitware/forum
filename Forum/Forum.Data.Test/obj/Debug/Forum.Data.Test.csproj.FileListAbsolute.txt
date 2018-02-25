@@ -1,4 +1,3 @@
-C:\Users\Dan\Documents\Repositories\forum\Forum\Forum.Data.Test\obj\Debug\Forum.Data.Test.csprojResolveAssemblyReference.cache
 C:\Users\Dan\Documents\Repositories\forum\Forum\Forum.Data.Test\bin\Debug\Forum.Data.Test.dll.config
 C:\Users\Dan\Documents\Repositories\forum\Forum\Forum.Data.Test\bin\Debug\Forum.Data.Test.dll
 C:\Users\Dan\Documents\Repositories\forum\Forum\Forum.Data.Test\bin\Debug\Forum.Data.Test.pdb
@@ -14,5 +13,6 @@ C:\Users\Dan\Documents\Repositories\forum\Forum\Forum.Data.Test\bin\Debug\Forum.
 C:\Users\Dan\Documents\Repositories\forum\Forum\Forum.Data.Test\bin\Debug\EntityFramework.xml
 C:\Users\Dan\Documents\Repositories\forum\Forum\Forum.Data.Test\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\Dan\Documents\Repositories\forum\Forum\Forum.Data.Test\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.xml
+C:\Users\Dan\Documents\Repositories\forum\Forum\Forum.Data.Test\obj\Debug\Forum.Data.Test.csprojResolveAssemblyReference.cache
 C:\Users\Dan\Documents\Repositories\forum\Forum\Forum.Data.Test\obj\Debug\Forum.Data.Test.dll
 C:\Users\Dan\Documents\Repositories\forum\Forum\Forum.Data.Test\obj\Debug\Forum.Data.Test.pdb

@@ -1,0 +1,61 @@
+﻿@using Forum.UI.Models
+@model List<PostModel>
+
+<div id="posts" class="table-responsive ">
+    <table class="table grid-table table-condensed table-head-alt mb30">
+        <thead>
+            <tr>
+                <th width="70"></th>
+                <th>
+                    Topics
+                </th>
+                <th>Views</th>
+                <th>Replies</th>
+
+            </tr>
+        </thead>
+
+        @for (int i = 0; i < Model.Count; i++)
+        {
+            if (Model[i].ViewCount > 0)
+            {
+                <tr style="vertical-align:middle; color:silver ">
+                    <td width="70"><img src="~/Content/Images/default_avatar.png" class="img-circle" height="50" /></td>
+
+                    <td style="font-weight:bold">
+                        <div style="font-weight:normal;font-size:11px;">
+                            Started by <span class="text-danger" style="font-weight:bold">@Html.DisplayFor(model => Model[i].User.Name)</span> on @Html.DisplayFor(model => Model[i].DatePosted)
+                        </div>
+                        @Html.ActionLink(Model[i].Subject, "Detail", "Post", new { pid = Model[i].Id }, new { target = "_self", @style = "color:silver" })
+                    </td>
+
+                    <td><span class="badge" style="background-color:silver;">@Html.DisplayFor(model => Model[i].ViewCount)</span></td>
+                    <td>
+                        <i class="fa fa-reply"></i>&nbsp;@Html.DisplayFor(model => Model[i].ReplyCount)
+                    </td>
+
+                </tr>
+            }
+            else
+            {
+                <tr style="vertical-align:middle; ">
+                    <td width="70"><img src="~/Content/Images/default_avatar.png" class="img-circle" height="50" /></td>
+
+                    <td style="font-weight:bold">
+                        <div style="font-weight:normal;font-size:11px;">
+                            Started by <span class="text-danger" style="font-weight:bold">@Html.DisplayFor(model => Model[i].User.Name)</span> on @Html.DisplayFor(model => Model[i].DatePosted)
+                        </div>
+                        @Html.ActionLink(Model[i].Subject, "Detail", "Post", new { pid = Model[i].Id }, new { target = "_self" })
+                    </td>
+
+                    <td><span class="badge" style="font-weight:bold;">@Html.DisplayFor(model => Model[i].ViewCount)</span></td>
+                    <td>
+                        <i class="fa fa-reply"></i>&nbsp;<span style="font-weight:bold;">@Html.DisplayFor(model => Model[i].ReplyCount)</span>
+                    </td>
+
+                </tr>
+            }
+        }
+    </table>
+</div>
+

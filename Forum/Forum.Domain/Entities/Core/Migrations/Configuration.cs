@@ -9,7 +9,7 @@ namespace Forum.Domain.Entities.Core.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
             MigrationsDirectory = @"Entities\Core\Migrations";
         }
 
@@ -31,6 +31,14 @@ namespace Forum.Domain.Entities.Core.Migrations
                 new Category { Name = "Infrastructural Engineering" },
                 new Category { Name = "Internet of Things" }
            );
+
+           // context.Persons.AddOrUpdate(c => c.Name,
+           //     new Person { Name = "Software Development" },
+           //     new Person { Name = "Infrastructural Engineering" },
+           //     new Person { Name = "Internet of Things" }
+           //);
+
+
         }
 
 

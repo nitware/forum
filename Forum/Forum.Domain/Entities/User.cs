@@ -9,7 +9,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Forum.Domain.Entities
 {
-    public class Person : BaseEntity
+    public class User : BaseEntity
     {
         [Required]
         [StringLength(50)]

@@ -2,129 +2,18 @@
 @model List<PostModel>
 
 @{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "Posts";
 }
-
-<style>
-    /*.post{
-        min-height:200px;
-        padding:20px;
-        margin-top:30px;
-        width:100%;
-        border-radius: 5px;
-        border: 1px solid gainsboro;
-        box-shadow: gray 5px 5px 2px;
-    }*/
-  
-   
-</style>
 
 @if (Model != null && Model.Count > 0)
 {
-    <div id="posts" class="table-responsive ">
-        <table class="table grid-table table-condensed table-head-alt mb30">
-            <thead>
-                <tr>
-                    <th width="70"></th>
-                    <th>
-                        Topics
-                    </th>
-                    <th>Views</th>
-                    <th>Replies</th>
-
-                </tr>
-            </thead>
-
-            @for (int i = 0; i < Model.Count; i++)
-            {
-                if (Model[i].ViewCount > 0)
-                {
-                    <tr style="vertical-align:middle; color:silver ">
-                        <td width="70"><img src="~/Content/Images/default_avatar.png" class="img-circle" height="50" /></td>
-
-                        <td style="font-weight:bold">
-                            <div style="font-weight:normal;font-size:11px;">
-                                Started by <span class="text-danger" style="font-weight:bold">@Html.DisplayFor(model => Model[i].User.Name)</span> on @Html.DisplayFor(model => Model[i].DatePosted)
-                            </div>
-                            @Html.ActionLink(Model[i].Subject, "Detail", "Post", new { pid = Model[i].Id }, new { target = "_self", @style = "color:silver" })
-                        </td>
-
-                        <td><span class="badge" style="background-color:silver;">@Html.DisplayFor(model => Model[i].ViewCount)</span></td>
-                        <td>
-                            <i class="fa fa-reply"></i>&nbsp;@Html.DisplayFor(model => Model[i].ReplyCount)
-                        </td>
-
-                    </tr>
-                }
-                else
-                {
-                    <tr style="vertical-align:middle; ">
-                        <td width="70"><img src="~/Content/Images/default_avatar.png" class="img-circle" height="50" /></td>
-
-                        <td style="font-weight:bold">
-                            <div style="font-weight:normal;font-size:11px;">
-                                Started by <span class="text-danger" style="font-weight:bold">@Html.DisplayFor(model => Model[i].User.Name)</span> on @Html.DisplayFor(model => Model[i].DatePosted)
-                            </div>
-                            @Html.ActionLink(Model[i].Subject, "Detail", "Post", new { pid = Model[i].Id }, new { target = "_self" })
-                        </td>
-
-                        <td><span class="badge" style="font-weight:bold;">@Html.DisplayFor(model => Model[i].ViewCount)</span></td>
-                        <td>
-                            <i class="fa fa-reply"></i>&nbsp;<span style="font-weight:bold;">@Html.DisplayFor(model => Model[i].ReplyCount)</span>
-                        </td>
-
-                    </tr>
-                }
-            }
-        </table>
-    </div>
+    @Html.Partial("_PostList", Model)
 }
 else
 {
     <div class="alert alert-dismissible alert-danger">
         <p>
-            No teacher found!
+            No post found!
         </p>
     </div>
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-@*<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
-
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>*@

@@ -12,13 +12,13 @@ namespace Forum.Domain.Entities
     public class Comment : BaseEntity
     {
         public int PostId { get; set; }
-        public int CommentorId { get; set; }
+        public int UserId { get; set; }
                 
         [Required]
         public string Reply { get; set; }
         public DateTime DatePosted { get; set; }
                 
-        public Person Commentor { get; set; }
+        public User User { get; set; }
         public Post Post { get; set; }
     }
 

@@ -1,4 +1,3 @@
-C:\Users\Dan\Documents\Repositories\forum\Forum\Forum.UI.Tests\obj\Debug\Forum.UI.Tests.csprojResolveAssemblyReference.cache
 C:\Users\Dan\Documents\Repositories\forum\Forum\Forum.UI.Tests\bin\Debug\ApplicationInsights.config
 C:\Users\Dan\Documents\Repositories\forum\Forum\Forum.UI.Tests\bin\Debug\roslyn\csc.exe
 C:\Users\Dan\Documents\Repositories\forum\Forum\Forum.UI.Tests\bin\Debug\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
@@ -25,7 +24,6 @@ C:\Users\Dan\Documents\Repositories\forum\Forum\Forum.UI.Tests\bin\Debug\System.
 C:\Users\Dan\Documents\Repositories\forum\Forum\Forum.UI.Tests\bin\Debug\System.Web.WebPages.Deployment.dll
 C:\Users\Dan\Documents\Repositories\forum\Forum\Forum.UI.Tests\bin\Debug\System.Web.WebPages.dll
 C:\Users\Dan\Documents\Repositories\forum\Forum\Forum.UI.Tests\bin\Debug\System.Web.WebPages.Razor.dll
-C:\Users\Dan\Documents\Repositories\forum\Forum\Forum.UI.Tests\bin\Debug\WebActivatorEx.dll
 C:\Users\Dan\Documents\Repositories\forum\Forum\Forum.UI.Tests\bin\Debug\Microsoft.Owin.dll
 C:\Users\Dan\Documents\Repositories\forum\Forum\Forum.UI.Tests\bin\Debug\System.Web.Optimization.dll
 C:\Users\Dan\Documents\Repositories\forum\Forum\Forum.UI.Tests\bin\Debug\Microsoft.AspNet.Identity.Core.dll
@@ -65,5 +63,6 @@ C:\Users\Dan\Documents\Repositories\forum\Forum\Forum.UI.Tests\bin\Debug\EntityF
 C:\Users\Dan\Documents\Repositories\forum\Forum\Forum.UI.Tests\bin\Debug\Unity.Abstractions.pdb
 C:\Users\Dan\Documents\Repositories\forum\Forum\Forum.UI.Tests\bin\Debug\Forum.Data.pdb
 C:\Users\Dan\Documents\Repositories\forum\Forum\Forum.UI.Tests\bin\Debug\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\Dan\Documents\Repositories\forum\Forum\Forum.UI.Tests\obj\Debug\Forum.UI.Tests.csprojResolveAssemblyReference.cache
 C:\Users\Dan\Documents\Repositories\forum\Forum\Forum.UI.Tests\obj\Debug\Forum.UI.Tests.dll
 C:\Users\Dan\Documents\Repositories\forum\Forum\Forum.UI.Tests\obj\Debug\Forum.UI.Tests.pdb

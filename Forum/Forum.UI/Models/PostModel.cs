@@ -20,7 +20,7 @@ namespace Forum.UI.Models
         }
 
         public int Id { get; set; }
-        public Person User { get; set; }
+        public User User { get; set; }
         public Category Category { get; set; }
 
         [Required]

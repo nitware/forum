@@ -7,6 +7,11 @@ using System.Web.Optimization;
 using System.Web.Routing;
 
 using Forum.UI.App_Start;
+using Forum.Service.Interfaces;
+using Forum.Domain.Entities;
+using Unity;
+using Unity.Mvc5;
+
 
 namespace Forum.UI
 {
@@ -20,8 +25,17 @@ namespace Forum.UI
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             GlobalFilters.Filters.Add(new AuthorizeAttribute());
-
+            //GlobalFilters.Filters.Add(new ForumAuthorizeAttribute());
+            
             EFConfig.Initialize();
+            UnityConfig.Container.Resolve<IDataSeedService>().SeedData();
         }
+
+      
+
+
+
+
+
     }
 }

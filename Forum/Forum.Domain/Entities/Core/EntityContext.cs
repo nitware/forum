@@ -12,7 +12,7 @@ namespace Forum.Domain.Entities.Core
     {
         public EntityContext() : base("ForumEntities") { }
         
-        public IDbSet<Person> Persons { get; set; }
+        public IDbSet<User> Users { get; set; }
         public IDbSet<Role> Roles { get; set; }
         public IDbSet<Category> Categorys { get; set; }
         public IDbSet<Comment> Comments { get; set; }

@@ -14,9 +14,11 @@ namespace Forum.UI
 {
     public static class UnityConfig
     {
+        public static UnityContainer Container;
+
         public static void RegisterComponents()
         {
-            var container = new UnityContainer();
+            Container = new UnityContainer();
 
             // register all your components with the container here
             // it is NOT necessary to register your controllers
@@ -27,21 +29,21 @@ namespace Forum.UI
             //container.RegisterType<ManageController>(new InjectionConstructor());
 
 
-            container.RegisterType<DbContext, EntityContext>();
-            container.RegisterType<IRepository<Comment>, Repository<Comment>>();
-            container.RegisterType<IRepository<Category>, Repository<Category>>();
-            container.RegisterType<IRepository<Person>, Repository<Person>>();
-            container.RegisterType<IRepository<Role>, Repository<Role>>();
-            container.RegisterType<IRepository<Post>, Repository<Post>>();
-            container.RegisterType<IPostService, PostService>();
-            container.RegisterType<BaseService<Category>, CategoryService>();
-            container.RegisterType<BaseService<Comment>, CommentService>();
-            container.RegisterType<IMembershipService, MembershipService>();
-            container.RegisterType<IRepository<View>, Repository<View>>();
-            //container.RegisterType<BaseService<View>, ViewService> ();
-            container.RegisterType<ICryptoService, CryptoService>();
-                                    
-            DependencyResolver.SetResolver(new UnityDependencyResolver(container));
+            Container.RegisterType<DbContext, EntityContext>();
+            Container.RegisterType<IRepository<Comment>, Repository<Comment>>();
+            Container.RegisterType<IRepository<Category>, Repository<Category>>();
+            Container.RegisterType<IRepository<User>, Repository<User>>();
+            Container.RegisterType<IRepository<Role>, Repository<Role>>();
+            Container.RegisterType<IRepository<Post>, Repository<Post>>();
+            Container.RegisterType<IPostService, PostService>();
+            Container.RegisterType<BaseService<Category>, CategoryService>();
+            Container.RegisterType<BaseService<Comment>, CommentService>();
+            Container.RegisterType<IMembershipService, MembershipService>();
+            Container.RegisterType<IRepository<View>, Repository<View>>();
+            Container.RegisterType<IDataSeedService, DataSeedService> ();
+            Container.RegisterType<ICryptoService, CryptoService>();
+
+            DependencyResolver.SetResolver(new UnityDependencyResolver(Container));
         }
 
 

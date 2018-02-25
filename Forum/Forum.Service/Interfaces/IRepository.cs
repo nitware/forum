@@ -12,7 +12,9 @@ namespace Forum.Service.Interfaces
     public interface IRepository<T> where T : class, new()
     {
         List<T> GetAll();
+        Task<List<T>> GetAllAsync();
         List<T> GetAll(string includePropertiesString);
+        Task<List<T>> GetAllAsync(string includePropertiesString);
         List<T> GetBy(Expression<Func<T, bool>> predicate);
         List<T> GetBy(Expression<Func<T, bool>> predicate, string includePropertiesString);
         T GetSingleBy(Expression<Func<T, bool>> predicate);

@@ -29,6 +29,10 @@ namespace Forum.Data
         {
             return _context.Set<T>().ToList();
         }
+        public async Task<List<T>> GetAllAsync()
+        {
+            return await _context.Set<T>().ToListAsync();
+        }
         public List<T> GetAll(string includePropertiesString)
         {
             IQueryable<T> entities = _context.Set<T>();
@@ -39,6 +43,17 @@ namespace Forum.Data
             }
 
             return entities.ToList();
+        }
+        public async Task<List<T>> GetAllAsync(string includePropertiesString)
+        {
+            IQueryable<T> entities = _context.Set<T>();
+            string[] includeProperties = includePropertiesString.Split(',');
+            foreach (var includeProperty in includeProperties)
+            {
+                entities = entities.Include(includeProperty);
+            }
+
+            return await entities.ToListAsync();
         }
 
 

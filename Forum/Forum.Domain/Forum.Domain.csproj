@@ -69,12 +69,16 @@
     <Compile Include="Entities\Core\Migrations\201802232309372_AddedViewEntity.Designer.cs">
       <DependentUpon>201802232309372_AddedViewEntity.cs</DependentUpon>
     </Compile>
+    <Compile Include="Entities\Core\Migrations\201802251131514_ChangedPersonToUser.cs" />
+    <Compile Include="Entities\Core\Migrations\201802251131514_ChangedPersonToUser.Designer.cs">
+      <DependentUpon>201802251131514_ChangedPersonToUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Entities\Core\Migrations\Configuration.cs" />
     <Compile Include="Entities\Post.cs" />
     <Compile Include="Entities\Role.cs" />
-    <Compile Include="Entities\Person.cs" />
+    <Compile Include="Entities\User.cs" />
     <Compile Include="Entities\View.cs" />
-    <Compile Include="Models\PersonContext.cs" />
+    <Compile Include="Models\UserContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -93,6 +97,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Entities\Core\Migrations\201802232309372_AddedViewEntity.resx">
       <DependentUpon>201802232309372_AddedViewEntity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Entities\Core\Migrations\201802251131514_ChangedPersonToUser.resx">
+      <DependentUpon>201802251131514_ChangedPersonToUser.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -66,7 +66,7 @@ namespace Forum.UI.Extensions
                 model.DatePosted = post.DatePosted;
                 model.Category = post.Category;
                 model.Subject = post.Subject;
-                model.User = post.Person;
+                model.User = post.User;
                 model.Body = post.Body;
                 model.Id = post.Id;
                 model.Comments = post.Comments != null ? post.Comments.ToModels() : null;
@@ -88,7 +88,7 @@ namespace Forum.UI.Extensions
             post.DatePosted = model.DatePosted;
             post.CategoryId = model.Category.Id;
             post.Subject = model.Subject;
-            post.PersonId = model.User.Id;
+            post.UserId = model.User.Id;
             post.Body = model.Body;
             post.Id = model.Id;
 

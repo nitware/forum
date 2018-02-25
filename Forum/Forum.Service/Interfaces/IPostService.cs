@@ -11,6 +11,7 @@ namespace Forum.Service.Interfaces
     public interface IPostService
     {
         List<Post> GetAll(string includeProperties = null);
+        Task<List<Post>> GetAllAsync(string includeProperties = null);
         Post GetBy(int id, string includeProperties);
         Post GetById(int id);
         Post GetByCategory(Category category);

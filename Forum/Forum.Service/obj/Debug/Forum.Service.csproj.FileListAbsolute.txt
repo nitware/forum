@@ -1,9 +1,9 @@
-C:\Users\Dan\Documents\Repositories\forum\Forum\Forum.Service\obj\Debug\Forum.Service.csprojResolveAssemblyReference.cache
 C:\Users\Dan\Documents\Repositories\forum\Forum\Forum.Service\bin\Debug\Forum.Service.dll
 C:\Users\Dan\Documents\Repositories\forum\Forum\Forum.Service\bin\Debug\Forum.Service.pdb
 C:\Users\Dan\Documents\Repositories\forum\Forum\Forum.Service\bin\Debug\Forum.Domain.dll
 C:\Users\Dan\Documents\Repositories\forum\Forum\Forum.Service\bin\Debug\EntityFramework.dll
 C:\Users\Dan\Documents\Repositories\forum\Forum\Forum.Service\bin\Debug\Forum.Domain.pdb
 C:\Users\Dan\Documents\Repositories\forum\Forum\Forum.Service\bin\Debug\EntityFramework.xml
+C:\Users\Dan\Documents\Repositories\forum\Forum\Forum.Service\obj\Debug\Forum.Service.csprojResolveAssemblyReference.cache
 C:\Users\Dan\Documents\Repositories\forum\Forum\Forum.Service\obj\Debug\Forum.Service.dll
 C:\Users\Dan\Documents\Repositories\forum\Forum\Forum.Service\obj\Debug\Forum.Service.pdb

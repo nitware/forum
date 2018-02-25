@@ -11,15 +11,17 @@ namespace Forum.Service.Interfaces
 {
     public interface IMembershipService
     {
-        Person CreateUser(Person user);
+        User CreateUser(User user);
 
-        Person GetUserById(int id);
-        List<Person> GetAllUsers();
-        Person GetUserByEmail(string email);
+        User GetUserById(int id);
+        List<User> GetAllUsers();
+        User GetUserByEmail(string email);
         bool ChangePassword(string username, string oldPassword, string newPassword);
-        PersonContext ValidateUser(string username, string password);
+        UserContext ValidateUser(string username, string password);
         bool UserExist(string email);
-        
+        bool IsUsersExist();
+
+
 
     }
 }

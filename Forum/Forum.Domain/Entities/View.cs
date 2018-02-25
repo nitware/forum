@@ -14,7 +14,7 @@ namespace Forum.Domain.Entities
         public int? UserId { get; set; }
         public DateTime On { get; set; }
 
-        public Person User { get; set; }
+        public User User { get; set; }
         public Post Post { get; set; }
     }
 }

@@ -9,6 +9,7 @@ using Forum.Service.Interfaces;
 using Forum.Domain.Entities;
 using Forum.UI.Models;
 using Forum.Service;
+using System.Threading.Tasks;
 
 namespace Forum.UI.Controllers
 {
@@ -56,10 +57,34 @@ namespace Forum.UI.Controllers
             return PartialView("_LatestPosts", posts.ToModels());
         }
 
+        //[AllowAnonymous]
+        //public async Task<ActionResult> GetLatestPost()
+        //{
+        //    List<Post> posts = await _postService.GetAllAsync();
+        //    if (posts != null && posts.Count > 0)
+        //    {
+        //        posts = posts.OrderByDescending(p => p.DatePosted).Take(5).ToList();
+        //    }
+
+        //    return PartialView("_LatestPosts", posts.ToModels());
+        //}
+
+        //[AllowAnonymous]
+        //public ActionResult Index()
+        //{
+        //    List<Post> posts = _postService.GetAll("Person,Comments,Views");
+        //    if (posts != null && posts.Count > 0)
+        //    {
+        //        posts = posts.OrderByDescending(p => p.DatePosted).ToList();
+        //    }
+
+        //    return View(posts.ToModels());
+        //}
+
         [AllowAnonymous]
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
-            List<Post> posts = _postService.GetAll("Person,Comments,Views");
+            List<Post> posts = await _postService.GetAllAsync("User,Comments,Views");
             if (posts != null && posts.Count > 0)
             {
                 posts = posts.OrderByDescending(p => p.DatePosted).ToList();
@@ -71,10 +96,10 @@ namespace Forum.UI.Controllers
         [AllowAnonymous]
         public ActionResult Detail(int pid)
         {
-            Post post = _postService.GetBy(pid, "Category,Person");
+            Post post = _postService.GetBy(pid, "Category,User");
             PostModel postModel = post.ToModel();
 
-            List<Comment> comments = _commentService.GetBy(p => p.PostId == pid, "Commentor");
+            List<Comment> comments = _commentService.GetBy(p => p.PostId == pid, "User");
             postModel.Comments = comments.ToModels();
             
             LogView(post);
@@ -98,7 +123,7 @@ namespace Forum.UI.Controllers
                 _viewService.Add(view);
                 _viewService.Save();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 //log error
             }
@@ -119,7 +144,7 @@ namespace Forum.UI.Controllers
                 _commentService.Add(model.Comment.ToEntity());
                 _commentService.Save();
 
-                List<Comment> comments = _commentService.GetBy(p => p.PostId == model.Id, "Commentor");
+                List<Comment> comments = _commentService.GetBy(p => p.PostId == model.Id, "User");
                 model.Comments = comments.ToModels();
             }
 

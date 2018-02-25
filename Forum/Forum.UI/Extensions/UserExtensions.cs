@@ -9,17 +9,17 @@ namespace Forum.UI.Extensions
 {
     public static class UserExtensions
     {
-        public static Person ToEntity(this UserModel model)
+        public static User ToEntity(this UserModel model)
         {
             return ConvertToEntity(model);
         }
 
-        public static UserModel ToModel(this Person user)
+        public static UserModel ToModel(this User user)
         {
             return ConvertToModel(user);
         }
 
-        public static List<UserModel> ToModels(this List<Person> users)
+        public static List<UserModel> ToModels(this List<User> users)
         {
             if (users == null || users.Count <= 0)
             {
@@ -27,7 +27,7 @@ namespace Forum.UI.Extensions
             }
 
             List<UserModel> models = new List<UserModel>();
-            foreach (Person user in users)
+            foreach (User user in users)
             {
                 if (user != null)
                 {
@@ -37,14 +37,14 @@ namespace Forum.UI.Extensions
 
             return models;
         }
-        public static List<Person> ToEntities(this List<UserModel> models)
+        public static List<User> ToEntities(this List<UserModel> models)
         {
             if (models == null || models.Count <= 0)
             {
-                return new List<Person>();
+                return new List<User>();
             }
 
-            List<Person> users = new List<Person>();
+            List<User> users = new List<User>();
             foreach (UserModel model in models)
             {
                 if (model != null)
@@ -56,7 +56,7 @@ namespace Forum.UI.Extensions
             return users;
         }
 
-        private static UserModel ConvertToModel(Person user)
+        private static UserModel ConvertToModel(User user)
         {
             if (user == null)
             {
@@ -77,14 +77,14 @@ namespace Forum.UI.Extensions
             return model;
         }
 
-        private static Person ConvertToEntity(UserModel model)
+        private static User ConvertToEntity(UserModel model)
         {
             if (model == null)
             {
-                return new Person();
+                return new User();
             }
 
-            Person user = new Person();
+            User user = new User();
             user.Id = model.Id;
             user.Name = model.Name;
             user.Email = model.Email;

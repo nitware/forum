@@ -17,7 +17,7 @@ namespace Forum.Domain.Entities
             Comments = new HashSet<Comment>();
         }
 
-        public int PersonId { get; set; }
+        public int UserId { get; set; }
         public int CategoryId { get; set; }
 
         [Required]
@@ -29,7 +29,7 @@ namespace Forum.Domain.Entities
         public DateTime DatePosted { get; set; }
 
         public Category Category { get; set; }
-        public Person Person { get; set; }
+        public User User { get; set; }
 
         public virtual ICollection<Comment> Comments { get; set; }
         public virtual ICollection<View> Views { get; set; }

@@ -11,10 +11,10 @@ namespace Forum.UI.Controllers
     public abstract class BaseController : Controller
     {
      
-        public static Person LoggedInUser { get; set; }
+        public static User LoggedInUser { get; set; }
         public static bool IsAuthenticated { get; set; }
 
-        public void Authenticated(bool authenticated, Person user = null)
+        public void Authenticated(bool authenticated, User user = null)
         {
             if (authenticated)
             {

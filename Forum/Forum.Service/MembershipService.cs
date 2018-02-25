@@ -15,10 +15,10 @@ namespace Forum.Service
     public class MembershipService : IMembershipService
     {
         private readonly IRepository<Role> _roleRepository;
-        private readonly IRepository<Person> _userRepository;
+        private readonly IRepository<User> _userRepository;
         private readonly ICryptoService _cryptoService;
 
-        public MembershipService(IRepository<Person> userRepository, IRepository<Role> roleRepository, ICryptoService cryptoService)
+        public MembershipService(IRepository<User> userRepository, IRepository<Role> roleRepository, ICryptoService cryptoService)
         {
             if (userRepository == null)
             {
@@ -38,7 +38,7 @@ namespace Forum.Service
             _cryptoService = cryptoService;
         }
 
-        public Person GetUserById(int id)
+        public User GetUserById(int id)
         {
             try
             {
@@ -49,18 +49,30 @@ namespace Forum.Service
                 throw;
             }
         }
-        public List<Person> GetAllUsers()
+        public List<User> GetAllUsers()
         {
             try
             {
-                return _userRepository.GetAll().ToList();
+                return _userRepository.GetAll();
             }
             catch (Exception)
             {
                 throw;
             }
         }
-        public Person GetUserByEmail(string email)
+        public bool IsUsersExist()
+        {
+            try
+            {
+                List<User> persons = _userRepository.GetAll();
+                return persons != null && persons.Count > 0 ? true : false;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        public User GetUserByEmail(string email)
         {
             try
             {
@@ -72,7 +84,7 @@ namespace Forum.Service
             }
         }
 
-        public Person CreateUser(Person user)
+        public User CreateUser(User user)
         {
             try
             {
@@ -86,16 +98,12 @@ namespace Forum.Service
                     throw new Exception("User already exist!");
                 }
 
-                //get default role
-                //Role defaultRole = _roleRepository.GetSingleBy(r => r.Name == "User");
-
                 Role defaultRole = new Role() { Id = 2 };
                 if (defaultRole == null)
                 {
                     throw new Exception("Default role does not exist! Please contact you system administrator");
                 }
 
-                //user.Id = Guid.NewGuid();
                 user.Salt = _cryptoService.GenerateSalt();
                 user.HashedPassword = _cryptoService.EncryptPassword(user.HashedPassword, user.Salt);
                 user.RoleId = defaultRole.Id;
@@ -117,7 +125,7 @@ namespace Forum.Service
         {
             try
             {
-                Person user = GetUserByEmail(email);
+                User user = GetUserByEmail(email);
                 return user != null ? true : false;
             }
             catch (Exception)
@@ -126,16 +134,16 @@ namespace Forum.Service
             }
         }
 
-        public PersonContext ValidateUser(string email, string password)
+        public UserContext ValidateUser(string email, string password)
         {
             try
             {
-                PersonContext userContext = null;
-                Person user = _userRepository.GetSingleBy(u => u.Email == email, "Role");
+                UserContext userContext = null;
+                User user = _userRepository.GetSingleBy(u => u.Email == email, "Role");
 
                 if (user != null && IsUserValid(user, password))
                 {
-                    userContext = new PersonContext();
+                    userContext = new UserContext();
                     string[] roles = new string[] { user.Role.Name };
                     GenericIdentity identity = new GenericIdentity(user.Name);
 
@@ -156,7 +164,7 @@ namespace Forum.Service
             throw new NotImplementedException();
         }
 
-        private bool IsUserValid(Person existingUser, string password)
+        private bool IsUserValid(User existingUser, string password)
         {
             try
             {
@@ -178,7 +186,7 @@ namespace Forum.Service
             }
         }
 
-        private bool IsPasswordValid(Person existingUser, string password)
+        private bool IsPasswordValid(User existingUser, string password)
         {
             try
             {

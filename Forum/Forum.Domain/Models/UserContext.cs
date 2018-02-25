@@ -9,9 +9,9 @@ using Forum.Domain.Entities;
 
 namespace Forum.Domain.Models
 {
-    public class PersonContext
+    public class UserContext
     {
-        public Person User { get; set; }
+        public User User { get; set; }
         public IPrincipal Principal { get; set; }
     }
 

@@ -19,9 +19,9 @@ namespace Forum.UI.Controllers
     {
         //private readonly IMembershipService _membershipService;
         private readonly MembershipService _membershipService;
-        private readonly IRepository<Person> _personService;
+        private readonly IRepository<User> _personService;
 
-        public UserController(MembershipService membershipService, IRepository<Person> personService)
+        public UserController(MembershipService membershipService, IRepository<User> personService)
         {
             if (membershipService == null)
             {
@@ -39,7 +39,7 @@ namespace Forum.UI.Controllers
         // GET: User
         public ActionResult Index()
         {
-            List<Person> users = new List<Person>();
+            List<User> users = new List<User>();
             users.ToModels();
 
             return View();
@@ -57,7 +57,7 @@ namespace Forum.UI.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    Person user = _membershipService.CreateUser(model.ToEntity());
+                    User user = _membershipService.CreateUser(model.ToEntity());
                     if (user != null && user.Id > 0)
                     {
                         return RedirectToAction("Index", "Post");
@@ -88,7 +88,7 @@ namespace Forum.UI.Controllers
 
             if (ModelState.IsValid)
             {
-                PersonContext userContext = _membershipService.ValidateUser(model.Email, model.HashedPassword);
+                UserContext userContext = _membershipService.ValidateUser(model.Email, model.HashedPassword);
                 if (userContext != null && userContext.Principal != null)
                 {
                     Authenticated(true, userContext.User);

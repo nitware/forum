@@ -12,7 +12,7 @@ namespace Forum.Service.Interfaces
     {
         List<Comment> GetAll();
         Comment GetById(Guid id);
-        Comment GetByUser(Person user);
+        Comment GetByUser(User user);
         Comment Create(Comment comment);
         void Update(Comment comment);
         void Delete(Comment comment);
